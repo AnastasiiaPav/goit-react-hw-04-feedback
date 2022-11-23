@@ -1,10 +1,9 @@
-import { Style } from "./App.styled";
+import { Box } from "./App.styled";
 
 import propType from 'prop-types';
 import { Component } from 'react';
 import { Statistic } from "./Statistic";
 import { Template } from "./Template";
-import { FeedbackOptions } from "./FeedbackOpyions";
 
 export class Reviews extends Component {
   state = {
@@ -52,7 +51,7 @@ export class Reviews extends Component {
 
   render() {
     return (
-      <div>
+      <Box>
         <Template
           OnHandleGood={this.handleGood}
           OnHandleNeutral={this.handleNeutral}
@@ -65,8 +64,8 @@ export class Reviews extends Component {
         total={this.countTotalFeedback()}
         procent={this.countPositiveFeedbackPercentage()} 
          />
-         <FeedbackOptions/>
-      </div>
+         {/* <FeedbackOptions/> */}
+      </Box>
     );
   }
 }
@@ -84,7 +83,6 @@ export const App = () => {
   return (
     <div>
       <Reviews/>
-      <Statistic/>
     </div>
   );
 };
