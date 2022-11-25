@@ -1,5 +1,6 @@
 import { ReviewBox } from './App.styled';
-import propTypes from 'prop-types'
+import propTypes from 'prop-types';
+
 
  export const Statistic = ({ good, neutral, bad, total, procent }) => {
   return (
@@ -12,6 +13,7 @@ import propTypes from 'prop-types'
     </ReviewBox>
   );
 };
+
 
 
 Statistic.propTypes = {

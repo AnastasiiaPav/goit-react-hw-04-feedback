@@ -5,6 +5,7 @@ import { Component } from 'react';
 import { Statistic } from "./Statistic";
 import { Template } from "./Template";
 
+
 export class Reviews extends Component {
   state = {
     good: 0,
@@ -57,6 +58,7 @@ export class Reviews extends Component {
           OnHandleNeutral={this.handleNeutral}
           OnHandleBad={this.handleBad}
           />
+          
         <Statistic
         good={this.state.good}
         neutral={this.state.neutral}
