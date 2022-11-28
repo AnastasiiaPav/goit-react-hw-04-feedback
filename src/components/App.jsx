@@ -1,90 +1,53 @@
-import { Box } from "./App.styled";
-
-import propType from 'prop-types';
 import { Component } from 'react';
-import { Statistic } from "./Statistic";
-import { Template } from "./Template";
+import { Statistic } from './Statistic';
+import { FeedbackOptions } from './FeedbackOpyions';
+import { Section } from './Section';
 
-
-export class Reviews extends Component {
+export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
 
-  handleGood = () => {
-    this.setState(currentState => {
-      return {
-        good: currentState.good + 1,
-      };
-    });
-  };
-
-  handleNeutral = () => {
-    this.setState(currentState => {
-      return {
-        neutral: currentState.neutral + 1,
-      };
-    });
-  };
-
-  handleBad = () => {
-    this.setState(currentState => {
-      return {
-        bad: currentState.bad + 1,
-      };
-    });
+  heandleButtonClick = event => {
+    this.setState(prevState => ({
+      [event.target.textContent]: prevState[event.target.textContent] + 1,
+    }));
   };
 
   countTotalFeedback = ({ good, neutral, bad } = this.state) => {
-   const total = bad + good + neutral
-   return total;
-  }
-
+    const total = bad + good + neutral;
+    return total;
+  };
 
   countPositiveFeedbackPercentage = ({ good, neutral, bad } = this.state) => {
- const total = bad + good + neutral
- const totalRewiev = Math.round(100/total * good)
- return totalRewiev;
-  }
-
+    const total = bad + good + neutral;
+    const totalRewiev = Math.round((100 / total) * good);
+    return totalRewiev;
+  };
 
   render() {
+    const namesButton = Object.keys(this.state);
     return (
-      <Box>
-        <Template
-          OnHandleGood={this.handleGood}
-          OnHandleNeutral={this.handleNeutral}
-          OnHandleBad={this.handleBad}
+      <div>
+        <Section title="Please, leave your feedback">
+          <FeedbackOptions
+            options={namesButton}
+            onLeaveFeedback={this.heandleButtonClick}
           />
-          
-        <Statistic
-        good={this.state.good}
-        neutral={this.state.neutral}
-        bad={this.state.bad}
-        total={this.countTotalFeedback()}
-        procent={this.countPositiveFeedbackPercentage()} 
-         />
-         {/* <FeedbackOptions/> */}
-      </Box>
+        </Section>
+
+        <Section title="Statistics">
+          <Statistic
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback()}
+            procent={this.countPositiveFeedbackPercentage()}
+          />
+        </Section>
+      </div>
     );
   }
 }
-
-Reviews.propType = {
-  good: propType.number,
-  bad: propType.number,
-  neutral: propType.number,
-  total: propType.number,
-  procent: propType.number,
-};
-
-
-export const App = () => {
-  return (
-    <div>
-      <Reviews/>
-    </div>
-  );
-};

@@ -3,11 +3,15 @@ import propTypes from 'prop-types';
 
 
  export const Statistic = ({ good, neutral, bad, total, procent }) => {
+  if (total === 0) {
+    return(<p>There is no feedback yet</p> )
+  } 
   return (
     <ReviewBox>
       <p>Good 👌 : {good}</p>
       <p>Neutral 😐 : {neutral}</p>
       <p>Bad 👎 : {bad}</p>
+
       <p>Total rewiew 👯‍♀️ : {total}</p>
       <p>Positive feedback: {procent}%</p>
     </ReviewBox>

@@ -19,14 +19,6 @@ export const Style = require("styled-components");
  `
 
  export const ButtonGood = styled.button`
-     background-color: #27a527;
-     width: 90px;
-     cursor: pointer;
-     border-radius: 10px;
-     align-items: center;
- `
-
- export const ButtonNeutral =  styled.button`
      background-color: transparent;
      width: 90px;
      cursor: pointer;
@@ -34,13 +26,6 @@ export const Style = require("styled-components");
      align-items: center;
  `
 
- export const ButtonBad = styled.button`
-     background-color: red;
-     width: 90px;
-     cursor: pointer;
-     border-radius: 10px;
-     align-items: center;
- `
 
  export const Statistic = styled.h2`
     font-size: 24px;

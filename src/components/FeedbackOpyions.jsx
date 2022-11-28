@@ -1,27 +1,16 @@
-import {
-    ButtonGood,
-    ButtonNeutral,
-    ButtonBad,
-    ButtonBox,
-  } from './App.styled';
-  
+import { ButtonGood, ButtonBox} from './App.styled'
+
   export const FeedbackOptions = ({
-    OnHandleBad,
-    OnHandleNeutral,
-    OnHandleGood,
+  options, onLeaveFeedback
   }) => {
     return (
-      <ButtonBox>
-      <ButtonGood type="button" onClick={OnHandleGood}>
-        Good
-      </ButtonGood>
-      <ButtonNeutral type="button" onClick={OnHandleNeutral}>
-        Neutral
-      </ButtonNeutral>
-      <ButtonBad type="button" onClick={OnHandleBad}>
-        Bad
-      </ButtonBad>
+    <ButtonBox>
+      {options.map(name => <li key={name}>
+        <ButtonGood type="button" onClick={onLeaveFeedback}>{name}</ButtonGood>
+      </li>)}
+
     </ButtonBox>
+   
     );
   };
   
