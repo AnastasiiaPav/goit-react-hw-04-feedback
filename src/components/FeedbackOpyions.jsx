@@ -1,4 +1,7 @@
 import { ButtonGood, ButtonBox} from './App.styled'
+import propTypes from 'prop-types';
+
+
 
   export const FeedbackOptions = ({
   options, onLeaveFeedback
@@ -14,3 +17,8 @@ import { ButtonGood, ButtonBox} from './App.styled'
     );
   };
   
+  FeedbackOptions.propTypes= {
+    options: propTypes.array,
+    name: propTypes.string,
+    onLeaveFeedback: propTypes.func,
+  }
